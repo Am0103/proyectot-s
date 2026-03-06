@@ -1,0 +1,303 @@
+{% extends "landing/base.html" %}
+
+{% block title %}Servicios - T&S Tecnología y Servicios{% endblock %}
+
+{% block content %}
+<!-- Header de la página -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold text-white mb-3">Nuestros Servicios</h1>
+                <p class="lead text-white-50">Soluciones completas de mantenimiento y tecnología</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios Principales -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Mantenimiento Preventivo -->
+            <div class="col-lg-6">
+                <div class="service-detail-card">
+                    <div class="service-image">
+                        <!-- Imagen propia de T&S -->
+                        <div style="height: 400px; background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); display: flex; align-items: center; justify-content: center; color: white; border-radius: 8px;">
+                            <div class="text-center">
+                                <i class="fas fa-calendar-check fa-4x mb-3"></i>
+                                <h3>MANTENIMIENTO PREVENTIVO</h3>
+                            </div>
+                        </div>
+                        <div class="service-overlay">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Mantenimiento Preventivo</h3>
+                        <p class="service-description">Programas estructurados de mantenimiento para prevenir fallas y maximizar la vida útil de tus equipos.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Inspecciones programadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Limpieza y lubricación</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Calibración de equipos</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Reportes detallados</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Programación flexible</span>
+                            </div>
+                        </div>
+                        <a href="{{ url_for('contacto') }}" class="btn btn-primary mt-3">
+                            <i class="fas fa-envelope me-2"></i>Solicitar Cotización
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mantenimiento Correctivo -->
+            <div class="col-lg-6">
+                <div class="service-detail-card">
+                    <div class="service-image">
+                        <!-- Imagen propia de T&S -->
+                        <div style="height: 400px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); display: flex; align-items: center; justify-content: center; color: white; border-radius: 8px;">
+                            <div class="text-center">
+                                <i class="fas fa-tools fa-4x mb-3"></i>
+                                <h3>MANTENIMIENTO CORRECTIVO</h3>
+                            </div>
+                        </div>
+                        <div class="service-overlay">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Mantenimiento Correctivo</h3>
+                        <p class="service-description">Reparaciones especializadas y solución rápida de averías para minimizar tiempos de inactividad.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Diagnóstico especializado</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Reparaciones urgentes</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Reemplazo de componentes</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Respuesta 24/7</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Garantía en servicios</span>
+                            </div>
+                        </div>
+                        <a href="{{ url_for('contacto') }}" class="btn btn-primary mt-3">
+                            <i class="fas fa-envelope me-2"></i>Solicitar Cotización
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gestión Digital -->
+            <div class="col-lg-6">
+                <div class="service-detail-card">
+                    <div class="service-image">
+                        <!-- Imagen propia de T&S -->
+                        <div style="height: 400px; background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); display: flex; align-items: center; justify-content: center; color: white; border-radius: 8px;">
+                            <div class="text-center">
+                                <i class="fas fa-chart-line fa-4x mb-3"></i>
+                                <h3>GESTIÓN DIGITAL</h3>
+                            </div>
+                        </div>
+                        <div class="service-overlay">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Gestión Digital</h3>
+                        <p class="service-description">Sistema avanzado de seguimiento y control de mantenimiento con reportes en tiempo real.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Dashboard en tiempo real</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Historial completo</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Alertas automáticas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Reportes personalizados</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Acceso multi-usuario</span>
+                            </div>
+                        </div>
+                        <a href="{{ url_for('sistema_login') }}" class="btn btn-success mt-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Acceder al Sistema
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consultoría Técnica -->
+            <div class="col-lg-6">
+                <div class="service-detail-card">
+                    <div class="service-image">
+                        <!-- Aquí pondrás tu imagen específica -->
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Consultoría Técnica" class="img-fluid">
+                        <div class="service-overlay">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Consultoría Técnica</h3>
+                        <p class="service-description">Asesoramiento especializado para optimizar tus procesos de mantenimiento y operación.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Análisis de eficiencia</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Planes de mejora</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Capacitación de personal</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Implementación de procesos</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Seguimiento continuo</span>
+                            </div>
+                        </div>
+                        <a href="{{ url_for('contacto') }}" class="btn btn-primary mt-3">
+                            <i class="fas fa-envelope me-2"></i>Solicitar Cotización
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sectores de Aplicación -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Sectores que Atendemos</h2>
+                <p class="lead">Experiencia en múltiples industrias</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="sector-card text-center">
+                    <i class="fas fa-industry"></i>
+                    <h5>Industrial</h5>
+                    <p>Mantenimiento de maquinaria y equipos industriales</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="sector-card text-center">
+                    <i class="fas fa-building"></i>
+                    <h5>Comercial</h5>
+                    <p>Sistemas HVAC, iluminación y equipos comerciales</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="sector-card text-center">
+                    <i class="fas fa-hospital"></i>
+                    <h5>Hospitalario</h5>
+                    <p>Equipos médicos y sistemas críticos</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="sector-card text-center">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h5>Educativo</h5>
+                    <p>Infraestructura y equipos educativos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Proceso de Trabajo -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Nuestro Proceso</h2>
+                <p class="lead">Metodología probada para garantizar resultados</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="step-number">1</div>
+                    <h5>Evaluación</h5>
+                    <p>Análisis completo de equipos y necesidades</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="step-number">2</div>
+                    <h5>Planificación</h5>
+                    <p>Diseño de programa personalizado</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="step-number">3</div>
+                    <h5>Ejecución</h5>
+                    <p>Implementación con personal especializado</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="step-number">4</div>
+                    <h5>Seguimiento</h5>
+                    <p>Monitoreo continuo y mejora constante</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-3">¿Necesitas más información?</h2>
+        <p class="lead mb-4">Contáctanos para una evaluación gratuita de tus necesidades de mantenimiento</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-warning btn-lg px-5">
+            <i class="fas fa-envelope me-2"></i>Solicitar Cotización
+        </a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Panel Mantenimiento</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+<style>
+body { font-family: Arial; background: #f4f6f9; margin: 20px; }
+h1 { color: #b22222; }
+.topbar { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; flex-wrap: wrap; }
+select, input { padding: 6px; border-radius: 4px; border: 1px solid #ccc; }
+.estado-ok { background: #d4edda !important; color: #155724 !important; font-weight: bold; }
+.estado-falla { background: #f8d7da !important; color: #721c24 !important; font-weight: bold; }
+.estado-otro { background: #fff3cd !important; color: #856404 !important; }
+.estado-blanco { background: #fff !important; color: #333 !important; }
+
+/* Contenedor de gráficas */
+.charts-container { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+.chart-box { 
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    min-width: 300px;
+    flex: 1;
+}
+.chart-box h3 { margin-top: 0; color: #333; text-align: center; }
+.chart-stats { margin-top: 10px; font-size: 0.9em; text-align: center; }
+
+/* Indicadores de rol */
+.role-badge { padding: 3px 8px; border-radius: 15px; font-size: 0.7em; margin-left: 10px; }
+.role-viewer { background: #fff3cd; color: #856404; }
+.role-editor { background: #d4edda; color: #155724; }
+
+/* Tabla no editable para viewers */
+.readonly-table td { cursor: default !important; }
+</style>
+</head>
+<body>
+<h1>📋 Panel de Mantenimiento 
+    <span style="color:#666; font-size:0.8em;">({{ cliente|title }})</span>
+    {% if rol == 'viewer' %}
+    <span class="role-badge role-viewer">👁️ SOLO LECTURA</span>
+    {% elif rol == 'editor' %}
+    <span class="role-badge role-editor">✏️ EDITOR</span>
+    {% endif %}
+</h1>
+<a href="/logout" style="float:right; color:#b22222; text-decoration:none;">🚪 Cerrar sesión</a>
+
+<div class="topbar">
+<label>Piso: <select id="filterPISO"><option value="">Todos</option></select></label>
+<label>Tipo: <select id="filterTIPO"><option value="">Todos</option></select></label>
+<label>Lazo: <select id="filterLAZO"><option value="">Todos</option></select></label>
+<label>Estado: <select id="filterESTADO"><option value="">Todos</option></select></label>
+<label>Buscar: <input id="q" placeholder="texto libre..."/></label>
+<div id="count" style="margin-left:auto;font-size:14px;color:#333"></div>
+</div>
+
+<table id="tbl" class="display{% if rol == 'viewer' %} readonly-table{% endif %}" style="width:100%">
+<thead>
+<tr>
+<th>ID</th><th>TIPO</th><th>PISO</th><th>UBICACION</th><th>LAZO</th>
+<th>DIRECCION</th><th>FECHA MANTO</th><th>ESTADO</th><th>OBSERVACION</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<!-- CONTENEDOR DE GRÁFICAS -->
+<div class="charts-container">
+    <!-- Gráfica Global -->
+    <div class="chart-box">
+        <h3>📊 Estado Global del Cliente</h3>
+        <canvas id="globalChart" width="300" height="200"></canvas>
+        <div id="globalStats" class="chart-stats"></div>
+    </div>
+    
+    <!-- Gráfica por Pisos -->
+    <div class="chart-box">
+        <h3>🏢 Avance por Pisos</h3>
+        <canvas id="pisosChart" width="300" height="200"></canvas>
+        <div id="pisosStats" class="chart-stats"></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+let allData = [];
+let dt = null;
+let globalChart = null;
+let pisosChart = null;
+const userRole = "{{ rol }}";
+
+async function loadData(){
+    try {
+        console.log("🔄 Cargando datos...");
+        const res = await fetch("/api/data");
+        console.log("📡 Respuesta:", res.status);
+        
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`Error ${res.status}: ${errorText}`);
+        }
+        
+        allData = await res.json();
+        console.log("✅ Datos cargados:", allData.length);
+        
+        if (allData.length === 0) {
+            $('#tbl tbody').html('<tr><td colspan="9" style="text-align:center;">No hay datos</td></tr>');
+            return;
+        }
+        
+        initTable();
+        
+    } catch(err){ 
+        console.error("❌ Error:", err);
+        $('#tbl tbody').html(`<tr><td colspan="9" style="text-align:center; color:red;">Error: ${err.message}</td></tr>`);
+    }
+}
+
+function initTable(){
+    console.log("🏗️ Creando tabla...");
+    
+    if(dt) { 
+        dt.destroy(); 
+        $('#tbl').empty().html(`
+            <thead><tr>
+                <th>ID</th><th>TIPO</th><th>PISO</th><th>UBICACION</th><th>LAZO</th>
+                <th>DIRECCION</th><th>FECHA MANTO</th><th>ESTADO</th><th>OBSERVACION</th>
+            </tr></thead><tbody></tbody>
+        `);
+    }
+    
+    dt = $('#tbl').DataTable({
+        data: allData,
+        columns: [
+            {data: 'SERIAL', title: 'ID'},
+            {data: 'TIPO'},
+            {data: 'PISO'},
+            {data: 'NOMBRE_UBICACION', title: 'UBICACION'},
+            {data: 'LAZO'},
+            {data: 'DIRECCION'},
+            {data: 'FECHA_MANTO', title: 'FECHA MANTO'},
+            {
+                data: 'ESTADO',
+                createdCell: function(td, cellData) {
+                    const estado = (cellData || "").trim().toLowerCase();
+                    if (estado === 'ok') {
+                        td.className = 'estado-ok';
+                    } else if (estado === 'falla') {
+                        td.className = 'estado-falla';
+                    } else if (estado !== '') {
+                        td.className = 'estado-otro';
+                    } else {
+                        td.className = 'estado-blanco';
+                    }
+                }
+            },
+            {data: 'OBSERVACION'}
+        ],
+        pageLength: 25,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json",
+            emptyTable: "No hay datos disponibles"
+        }
+    });
+    
+    console.log("✅ Tabla creada");
+    populateFilters();
+    dt.on('draw', updateCount);
+    enableEdit();
+    updateCount();
+    renderCharts();
+}
+
+function populateFilters(){
+    console.log("🔧 Creando filtros...");
+    
+    ['PISO','TIPO','LAZO','ESTADO'].forEach(field => {
+        const values = [...new Set(allData.map(r => r[field] || '').filter(x => x.trim()))].sort();
+        const select = document.getElementById('filter' + field);
+        select.innerHTML = '<option value="">Todos</option>';
+        values.forEach(v => {
+            const opt = document.createElement('option');
+            opt.value = v;
+            opt.textContent = v;
+            select.appendChild(opt);
+        });
+        select.addEventListener('change', () => applyFilter(field, select.value));
+    });
+    
+    document.getElementById('q').addEventListener('input', e => {
+        dt.search(e.target.value).draw();
+        updateCount();
+    });
+}
+
+function applyFilter(field, value){
+    const colIndex = {PISO: 2, TIPO: 1, LAZO: 4, ESTADO: 7}[field];
+    dt.column(colIndex).search(value ? '^' + value + '$' : '', true, false, true).draw();
+    updateCount();
+}
+
+function updateCount(){
+    const filtered = dt ? dt.rows({filter:'applied'}).data().length : 0;
+    const total = allData.length;
+    document.getElementById('count').textContent = `Mostrando: ${filtered} / ${total}`;
+}
+
+function enableEdit(){
+    // Solo permitir edición si el rol es 'editor'
+    if (userRole !== 'editor') {
+        console.log('👁️ Usuario sin permisos de edición');
+        return; // Salir si no es editor
+    }
+    
+    $('#tbl tbody').on('click', 'td', function(){
+        if (dt.cell(this).index().column === 0) return; // No editar ID
+        
+        const cell = dt.cell(this);
+        const oldValue = cell.data() || '';
+        const input = $('<input>').val(oldValue).css({
+            'width': '100%',
+            'border': '2px solid #007bff'
+        });
+        
+        $(this).html(input);
+        input.focus().select();
+        
+        const saveEdit = async function(){
+            const newValue = input.val();
+            cell.data(newValue).draw();
+            
+            const rowData = dt.row(cell.index().row).data();
+            const colName = dt.settings()[0].aoColumns[cell.index().column].data;
+            
+            try {
+                const response = await fetch('/api/update', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        SERIAL: rowData.SERIAL,
+                        campo: colName,
+                        valor: newValue
+                    })
+                });
+                
+                if (response.ok) {
+                    console.log("✅ Guardado");
+                    updateCount();
+                    renderCharts();
+                } else {
+                    const error = await response.json();
+                    console.error("❌ Error al guardar:", error.error);
+                    alert("Error: " + error.error);
+                }
+            } catch(err) {
+                console.error("💥 Error:", err);
+                alert("Error de conexión");
+            }
+        };
+
+        input.blur(saveEdit);
+        input.keypress(function(e) {
+            if (e.which === 13) saveEdit();
+        });
+    });
+}
+
+// ========== FUNCIONES DE GRÁFICAS ==========
+
+function renderCharts(){
+    renderGlobalChart();
+    renderPisosChart();
+}
+
+function renderGlobalChart(){
+    console.log("📊 Creando gráfica global...");
+    
+    if (!allData || allData.length === 0) return;
+    
+    const estados = {};
+    allData.forEach(d => {
+        const estado = (d.ESTADO || "").trim();
+        const key = estado === "" ? "Sin estado" : estado;
+        estados[key] = (estados[key] || 0) + 1;
+    });
+    
+    const ctx = document.getElementById('globalChart');
+    if (!ctx) return;
+    
+    if(globalChart) globalChart.destroy();
+    
+    const labels = Object.keys(estados);
+    const data = Object.values(estados);
+    const colors = labels.map(label => {
+        const l = label.toLowerCase();
+        if (l === 'ok') return '#28a745';
+        if (l.includes('falla')) return '#dc3545';
+        if (l === 'sin estado') return '#6c757d';
+        return '#ffc107';
+    });
+    
+    globalChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: colors,
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+    
+    // Estadísticas globales
+    const total = allData.length;
+    const revisados = allData.filter(d => d.ESTADO && d.ESTADO.trim() !== '').length;
+    const porcentaje = total > 0 ? Math.round(revisados / total * 100) : 0;
+    
+    document.getElementById('globalStats').innerHTML = `
+        <strong>Total dispositivos:</strong> ${total}<br>
+        <strong>Con estado:</strong> ${revisados} (${porcentaje}%)<br>
+        <strong>Sin estado:</strong> ${total - revisados}
+    `;
+}
+
+function renderPisosChart(){
+    console.log("🏢 Creando gráfica por pisos...");
+    
+    if (!allData || allData.length === 0) return;
+    
+    // Agrupar por piso
+    const pisoStats = {};
+    allData.forEach(d => {
+        const piso = d.PISO || 'Sin piso';
+        if (!pisoStats[piso]) {
+            pisoStats[piso] = { total: 0, conEstado: 0 };
+        }
+        pisoStats[piso].total++;
+        if (d.ESTADO && d.ESTADO.trim() !== '') {
+            pisoStats[piso].conEstado++;
+        }
+    });
+    
+    const ctx = document.getElementById('pisosChart');
+    if (!ctx) return;
+    
+    if(pisosChart) pisosChart.destroy();
+    
+    const pisos = Object.keys(pisoStats).sort();
+    const totales = pisos.map(p => pisoStats[p].total);
+    const conEstado = pisos.map(p => pisoStats[p].conEstado);
+    
+    pisosChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: pisos,
+            datasets: [
+                {
+                    label: 'Total dispositivos',
+                    data: totales,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Con estado',
+                    data: conEstado,
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            },
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+    
+    // Estadísticas por pisos
+    let statsHtml = '<table style="width:100%; font-size:0.8em; margin-top:10px;"><tr><th>Piso</th><th>Total</th><th>Con Estado</th><th>%</th></tr>';
+    pisos.forEach(piso => {
+        const stats = pisoStats[piso];
+        const porcentaje = Math.round((stats.conEstado / stats.total) * 100);
+        statsHtml += `<tr><td>${piso}</td><td>${stats.total}</td><td>${stats.conEstado}</td><td>${porcentaje}%</td></tr>`;
+    });
+    statsHtml += '</table>';
+    
+    document.getElementById('pisosStats').innerHTML = statsHtml;
+}
+
+// Iniciar cuando esté listo
+$(document).ready(function() {
+    console.log("🚀 Iniciando aplicación...");
+    console.log("👤 Rol de usuario:", userRole);
+    loadData();
+});
+</script>
+</body>
+</html>

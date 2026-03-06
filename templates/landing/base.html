@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}T&S - Tecnología y Servicios{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/logo.jpeg') }}" alt="T&S Logo" class="me-2" style="height: 40px; width: auto;">
+                T&S
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">
+                            <i class="fas fa-home me-1"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown mega-dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ url_for('servicios') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-cogs me-1"></i>Servicios
+                        </a>
+                        <div class="dropdown-menu mega-menu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-item">
+                                            <div class="mega-icon">
+                                                <i class="fas fa-calendar-check"></i>
+                                            </div>
+                                            <h6>Mantenimiento Preventivo</h6>
+                                            <p>Programas estructurados para prevenir fallas</p>
+                                            <a href="{{ url_for('servicios') }}#preventivo" class="btn btn-outline-primary btn-sm">Ver más</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-item">
+                                            <div class="mega-icon">
+                                                <i class="fas fa-tools"></i>
+                                            </div>
+                                            <h6>Mantenimiento Correctivo</h6>
+                                            <p>Reparaciones especializadas y respuesta rápida</p>
+                                            <a href="{{ url_for('servicios') }}#correctivo" class="btn btn-outline-primary btn-sm">Ver más</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-item">
+                                            <div class="mega-icon">
+                                                <i class="fas fa-chart-line"></i>
+                                            </div>
+                                            <h6>Gestión Digital</h6>
+                                            <p>Sistema avanzado de seguimiento y control</p>
+                                            <a href="{{ url_for('sistema_login') }}" class="btn btn-success btn-sm">Acceder</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mega-menu-item">
+                                            <div class="mega-icon">
+                                                <i class="fas fa-lightbulb"></i>
+                                            </div>
+                                            <h6>Consultoría Técnica</h6>
+                                            <p>Asesoramiento especializado y optimización</p>
+                                            <a href="{{ url_for('contacto') }}" class="btn btn-outline-primary btn-sm">Consultar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="mega-menu-footer">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-8">
+                                                    <h6 class="text-primary mb-2">
+                                                        <i class="fas fa-award me-2"></i>¿Por qué elegir T&S?
+                                                    </h6>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <small class="text-muted">
+                                                                <i class="fas fa-check text-success me-1"></i>Experiencia comprobada<br>
+                                                                <i class="fas fa-check text-success me-1"></i>Tecnología avanzada
+                                                            </small>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <small class="text-muted">
+                                                                <i class="fas fa-check text-success me-1"></i>Respuesta 24/7<br>
+                                                                <i class="fas fa-check text-success me-1"></i>Personal certificado
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-center">
+                                                    <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                                        <i class="fas fa-envelope me-2"></i>Cotización Gratuita
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('proyectos') }}">
+                            <i class="fas fa-trophy me-1"></i>Nuestros Proyectos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contacto') }}">
+                            <i class="fas fa-envelope me-1"></i>Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('privacidad') }}">
+                            <i class="fas fa-shield-alt me-1"></i>Privacidad
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light px-3" href="{{ url_for('sistema_login') }}">
+                            <i class="fas fa-sign-in-alt me-1"></i>Acceso Sistema
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-tools me-2"></i>T&S - Tecnología y Servicios</h5>
+                    <p class="mb-0">Soluciones profesionales en mantenimiento y tecnología</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="fas fa-envelope me-2"></i>contacto@tys.com<br>
+                        <i class="fas fa-phone me-2"></i>+1 234 567-8900
+                    </p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <div class="footer-legal-links mb-3">
+                    <a href="{{ url_for('privacidad') }}" class="btn btn-outline-light btn-sm me-2">
+                        <i class="fas fa-shield-alt me-1"></i>Política de Privacidad
+                    </a>
+                    <a href="{{ url_for('contacto') }}" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-envelope me-1"></i>Contacto Legal
+                    </a>
+                </div>
+                <small>&copy; 2025 T&S. Todos los derechos reservados.</small>
+                <div class="mt-2">
+                    <small class="text-white-50">
+                        Comprometidos con la protección de sus datos personales conforme al RGPD
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

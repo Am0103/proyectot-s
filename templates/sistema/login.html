@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Login - Sistema de Mantenimiento</title>
+<style>
+body { font-family: Arial; background: #f4f6f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+.login-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,.15); max-width: 400px; width: 100%; }
+.login-container h2 { color: #b22222; text-align: center; margin-bottom: 30px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+.form-group select, .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
+.btn { background: #b22222; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; }
+.btn:hover { background: #8b1a1a; }
+.error { color: red; text-align: center; margin-bottom: 15px; }
+
+/* CUADRO DE AYUDA - OCULTO POR DEFECTO */
+.help-box { 
+    background: #f8f9fa; 
+    border: 1px solid #e9ecef; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-top: 20px; 
+    font-size: 13px;
+    display: none; /* OCULTO POR DEFECTO */
+}
+.help-box h4 { margin: 0 0 10px 0; color: #495057; }
+.user-list { margin: 5px 0; }
+.user-item { margin: 3px 0; }
+
+/* Botón para mostrar ayuda */
+.help-toggle {
+    text-align: center;
+    margin-top: 15px;
+}
+.help-toggle button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.help-toggle button:hover {
+    background: #5a6268;
+}
+</style>
+</head>
+<body>
+<div class="login-container">
+    <h2>🔐 Iniciar Sesión</h2>
+    
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+    
+    <form method="post">
+        <div class="form-group">
+            <label>Cliente:</label>
+            <select name="cliente" id="cliente" required>
+                <option value="">Seleccione cliente...</option>
+                {% for cliente in clientes %}
+                <option value="{{ cliente }}">{{ cliente|title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Usuario:</label>
+            <input type="text" name="usuario" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Contraseña:</label>
+            <input type="password" name="clave" required>
+        </div>
+        
+        <button type="submit" class="btn">Ingresar</button>
+    </form>
+    
+</script>
+</body>
+</html>

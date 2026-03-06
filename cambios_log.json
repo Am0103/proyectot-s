@@ -1,0 +1,275 @@
+[
+  {
+    "fecha": "24/09/2025 11:39:21",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:39:56",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:40:14",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:40:29",
+    "cliente": "eden",
+    "usuario": "eden",
+    "accion": "Inicio de sesión",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:40:34",
+    "cliente": "eden",
+    "usuario": "eden",
+    "accion": "Cierre de sesión",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:41:17",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 11:41:44",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:19:23",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:19:45",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:21:28",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:21:36",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:21:45",
+    "cliente": "eden",
+    "usuario": "eden",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:22:31",
+    "cliente": "eden",
+    "usuario": "eden",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:23:46",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:23:54",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:24:21",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:24:23",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:24:30",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:25:36",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Actualización usuario bulevar/bulevar_view",
+    "detalle": "Rol: viewer -> viewer"
+  },
+  {
+    "fecha": "24/09/2025 13:25:50",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Actualización usuario eden/eden_view",
+    "detalle": "Rol: viewer -> viewer"
+  },
+  {
+    "fecha": "24/09/2025 13:25:56",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:26:25",
+    "cliente": "bulevar",
+    "usuario": "bulevar_view",
+    "accion": "Inicio de sesión (viewer)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:26:35",
+    "cliente": "bulevar",
+    "usuario": "bulevar_view",
+    "accion": "Cierre de sesión (viewer)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:40:25",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:42:29",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:42:35",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "24/09/2025 13:44:18",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 11:50:24",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 12:03:57",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:43:30",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:43:41",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:53:24",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:53:32",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:53:53",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 14:54:00",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 15:18:29",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 15:18:35",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 15:56:56",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
+  },
+  {
+    "fecha": "25/09/2025 15:57:05",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Cierre de sesión admin",
+    "detalle": ""
+  }
+]

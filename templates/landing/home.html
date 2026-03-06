@@ -1,0 +1,1189 @@
+{% extends "landing/base.html" %}
+
+{% block title %}T&S - Tecnología y Servicios | Mantenimiento Profesional{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+    <!-- Partículas flotantes -->
+    <div class="particles-container">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+    </div>
+    
+    <!-- Imagen de fondo propia -->
+    <div class="hero-background">
+        <img src="{{ url_for('static', filename='img/fondo1.jpg') }}" 
+             alt="T&S - Tecnología y Mantenimiento" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold text-white mb-4 animate-fade-up">
+                        Tecnología y Servicios <span class="text-warning">Profesionales</span>
+                    </h1>
+                    <p class="lead text-white mb-4 animate-fade-up" style="animation-delay: 0.3s;">
+                        Especializados en mantenimiento preventivo, correctivo y soluciones tecnológicas para empresas que buscan excelencia operacional.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap animate-fade-up" style="animation-delay: 0.6s;">
+                        <a href="{{ url_for('servicios') }}" class="btn btn-warning btn-lg px-4 shadow">
+                            <i class="fas fa-cogs me-2"></i>Nuestros Servicios
+                        </a>
+                        <a href="{{ url_for('sistema_login') }}" class="btn btn-outline-light btn-lg px-4 shadow">
+                            <i class="fas fa-sign-in-alt me-2"></i>Acceder al Sistema
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-visual animate-fade-left">
+                    <img src="{{ url_for('static', filename='img/equipo/equipo-profesional.svg') }}" 
+                         alt="Equipo de trabajo profesional" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down animate-bounce"></i>
+    </div>
+</section>
+
+<!-- Servicios Destacados -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Nuestros Servicios</h2>
+                <p class="lead">Soluciones integrales para el mantenimiento de tus equipos</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 service-card">
+                    <div class="card-img-container">
+                        <div class="service-image-placeholder" style="height: 250px; background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div class="text-center">
+                                <i class="fas fa-calendar-check fa-3x mb-3"></i>
+                                <h5>MANTENIMIENTO<br>PREVENTIVO</h5>
+                            </div>
+                        </div>
+                        <div class="card-img-overlay-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Mantenimiento Preventivo</h4>
+                        <p class="text-muted">
+                            Programas de mantenimiento planificado para evitar fallas y optimizar el rendimiento de tus equipos.
+                        </p>
+                        <a href="{{ url_for('servicios') }}" class="btn btn-outline-primary btn-sm">
+                            Ver detalles <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 service-card">
+                    <div class="card-img-container">
+                        <div class="service-image-placeholder" style="height: 250px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div class="text-center">
+                                <i class="fas fa-tools fa-3x mb-3"></i>
+                                <h5>MANTENIMIENTO<br>CORRECTIVO</h5>
+                            </div>
+                        </div>
+                        <div class="card-img-overlay-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Mantenimiento Correctivo</h4>
+                        <p class="text-muted">
+                            Reparaciones especializadas y solución rápida de averías para minimizar tiempos de inactividad.
+                        </p>
+                        <a href="{{ url_for('servicios') }}" class="btn btn-outline-primary btn-sm">
+                            Ver detalles <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 service-card">
+                    <div class="card-img-container">
+                        <div class="service-image-placeholder" style="height: 250px; background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div class="text-center">
+                                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                                <h5>GESTIÓN<br>DIGITAL</h5>
+                            </div>
+                        </div>
+                        <div class="card-img-overlay-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Gestión Digital</h4>
+                        <p class="text-muted">
+                            Sistema avanzado de seguimiento y control de mantenimiento con reportes en tiempo real.
+                        </p>
+                        <a href="{{ url_for('servicios') }}" class="btn btn-outline-primary btn-sm">
+                            Ver detalles <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Características con imagen -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="feature-image-container">
+                    <div style="height: 450px; background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7); background-size: 400% 400%; animation: gradientShift 8s ease infinite; display: flex; align-items: center; justify-content: center; color: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;">
+                        
+                        <!-- Partículas flotantes animadas -->
+                        <div style="position: absolute; top: 15%; left: 10%; width: 8px; height: 8px; background: rgba(255,255,255,0.8); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+                        <div style="position: absolute; top: 25%; right: 15%; width: 12px; height: 12px; background: rgba(255,255,255,0.6); border-radius: 50%; animation: float 4s ease-in-out infinite 1s;"></div>
+                        <div style="position: absolute; bottom: 20%; left: 20%; width: 6px; height: 6px; background: rgba(255,255,255,0.9); border-radius: 50%; animation: float 5s ease-in-out infinite 2s;"></div>
+                        <div style="position: absolute; bottom: 30%; right: 25%; width: 10px; height: 10px; background: rgba(255,255,255,0.7); border-radius: 50%; animation: float 7s ease-in-out infinite 0.5s;"></div>
+                        
+                        <!-- Formas geométricas -->
+                        <div style="position: absolute; top: 10%; right: 10%; width: 60px; height: 60px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; animation: rotate 10s linear infinite;"></div>
+                        <div style="position: absolute; bottom: 15%; left: 15%; width: 40px; height: 40px; background: rgba(255,255,255,0.2); transform: rotate(45deg); animation: pulse 3s ease-in-out infinite;"></div>
+                        
+                        <!-- Iconos principales con animación -->
+                        <div class="text-center">
+                            <div style="display: flex; justify-content: center; margin-bottom: 25px; flex-wrap: wrap;">
+                                <div style="margin: 10px 15px; animation: bounce 2s ease-in-out infinite; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px);">
+                                    <i class="fas fa-rocket" style="font-size: 2.8rem; color: #FFD93D;"></i>
+                                </div>
+                                <div style="margin: 10px 15px; animation: bounce 2s ease-in-out infinite 0.3s; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px);">
+                                    <i class="fas fa-star" style="font-size: 3.2rem; color: #6BCF7F;"></i>
+                                </div>
+                                <div style="margin: 10px 15px; animation: bounce 2s ease-in-out infinite 0.6s; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px);">
+                                    <i class="fas fa-magic" style="font-size: 2.8rem; color: #FF6B9D;"></i>
+                                </div>
+                            </div>
+                            <h3 style="margin-bottom: 15px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-size: 2.2rem;">✨ EXCELENCIA T&S ✨</h3>
+                            <p style="font-size: 1.3rem; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Innovación • Calidad • Confianza</p>
+                            <div style="margin-top: 20px;">
+                                <span style="background: rgba(255,255,255,0.9); color: #333; padding: 8px 20px; border-radius: 25px; font-weight: bold; margin: 0 5px; display: inline-block;">🏆 #1 EN CALIDAD</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Efecto de brillo -->
+                        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); animation: shine 3s ease-in-out infinite;"></div>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Certificados ISO</span>
+                    </div>
+                </div>
+
+<style>
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(1.2); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-10px); }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+</style>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-4">¿Por qué elegir T&S?</h2>
+                <div class="feature-list">
+                    <div class="feature-item mb-3 animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle text-success"></i>
+                        </div>
+                        <div class="feature-content">
+                            <strong>Experiencia Comprobada</strong>
+                            <p class="mb-0 text-muted">Años de experiencia en mantenimiento industrial</p>
+                        </div>
+                    </div>
+                    <div class="feature-item mb-3 animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-microchip text-primary"></i>
+                        </div>
+                        <div class="feature-content">
+                            <strong>Tecnología Avanzada</strong>
+                            <p class="mb-0 text-muted">Sistema digital de gestión y seguimiento</p>
+                        </div>
+                    </div>
+                    <div class="feature-item mb-3 animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock text-warning"></i>
+                        </div>
+                        <div class="feature-content">
+                            <strong>Respuesta Rápida</strong>
+                            <p class="mb-0 text-muted">Tiempos de respuesta optimizados</p>
+                        </div>
+                    </div>
+                    <div class="feature-item mb-3 animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate text-info"></i>
+                        </div>
+                        <div class="feature-content">
+                            <strong>Personal Calificado</strong>
+                            <p class="mb-0 text-muted">Técnicos especializados y certificados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estadísticas -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-4">
+                <h3 class="fw-bold">Nuestros Números Hablan</h3>
+                <p class="text-light">Resultados que respaldan nuestra experiencia</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-number text-warning">500+</div>
+                    <div class="stat-label">Equipos Mantenidos</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="stat-number text-warning">95+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number text-warning">99%</div>
+                    <div class="stat-label">Disponibilidad</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="stat-number text-warning">24/7</div>
+                    <div class="stat-label">Soporte</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <div style="display: inline-block; background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 10px 30px; border-radius: 50px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,123,255,0.3);">
+                    <i class="fas fa-quote-left me-2"></i>
+                    <strong>TESTIMONIOS</strong>
+                </div>
+                <h2 class="display-5 fw-bold mb-3" style="color: #2c3e50;">💬 Lo que dicen nuestros clientes</h2>
+                <p class="lead text-muted">Experiencias reales de empresas que han transformado su mantenimiento con T&S</p>
+                <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #007bff, #28a745, #dc3545); margin: 20px auto; border-radius: 2px;"></div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #e9ecef; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+                     onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 50px rgba(0,0,0,0.15)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.1)'">
+                    
+                    <!-- Decoración superior -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #007bff, #0056b3);"></div>
+                    
+                    <!-- Comillas decorativas -->
+                    <div style="position: absolute; top: 15px; right: 20px; font-size: 3rem; color: #e9ecef; opacity: 0.5;">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <span style="margin-left: 10px; color: #666; font-weight: 600;">5.0</span>
+                        </div>
+                        <p style="font-style: italic; font-size: 1.1rem; line-height: 1.6; color: #495057; margin-bottom: 25px;">
+                            "El sistema de gestión digital de T&S ha revolucionado nuestro control de mantenimiento. Ahora tenemos visibilidad completa de todos nuestros equipos."
+                        </p>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding-top: 20px; border-top: 1px solid #e9ecef;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem; margin-right: 15px; box-shadow: 0 4px 15px rgba(0,123,255,0.3);">
+                            CM
+                        </div>
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 1.1rem;">Carlos Mendoza</strong>
+                            <div style="color: #6c757d; font-size: 0.95rem; margin-top: 2px;">Gerente de Operaciones</div>
+                            <div style="color: #007bff; font-weight: 600; font-size: 0.9rem;">📍 Bulevar Shopping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #e9ecef; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+                     onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 50px rgba(0,0,0,0.15)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.1)'">
+                    
+                    <!-- Decoración superior -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #28a745, #1e7e34);"></div>
+                    
+                    <!-- Comillas decorativas -->
+                    <div style="position: absolute; top: 15px; right: 20px; font-size: 3rem; color: #e9ecef; opacity: 0.5;">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <span style="margin-left: 10px; color: #666; font-weight: 600;">5.0</span>
+                        </div>
+                        <p style="font-style: italic; font-size: 1.1rem; line-height: 1.6; color: #495057; margin-bottom: 25px;">
+                            "La respuesta rápida de T&S nos salvó durante una emergencia. Su equipo técnico llegó en menos de 2 horas y solucionó el problema completamente."
+                        </p>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding-top: 20px; border-top: 1px solid #e9ecef;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem; margin-right: 15px; box-shadow: 0 4px 15px rgba(40,167,69,0.3);">
+                            AG
+                        </div>
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 1.1rem;">Ana García</strong>
+                            <div style="color: #6c757d; font-size: 0.95rem; margin-top: 2px;">Directora Técnica</div>
+                            <div style="color: #28a745; font-weight: 600; font-size: 0.9rem;">🏢 Complejo Eden</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #e9ecef; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+                     onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 50px rgba(0,0,0,0.15)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.1)'">
+                    
+                    <!-- Decoración superior -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #dc3545, #c82333);"></div>
+                    
+                    <!-- Comillas decorativas -->
+                    <div style="position: absolute; top: 15px; right: 20px; font-size: 3rem; color: #e9ecef; opacity: 0.5;">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <i class="fas fa-star" style="color: #ffc107; font-size: 1.1rem;"></i>
+                            <span style="margin-left: 10px; color: #666; font-weight: 600;">5.0</span>
+                        </div>
+                        <p style="font-style: italic; font-size: 1.1rem; line-height: 1.6; color: #495057; margin-bottom: 25px;">
+                            "El mantenimiento preventivo ha reducido nuestras fallas en un 80%. T&S realmente entiende las necesidades de la industria moderna."
+                        </p>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding-top: 20px; border-top: 1px solid #e9ecef;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem; margin-right: 15px; box-shadow: 0 4px 15px rgba(220,53,69,0.3);">
+                            RS
+                        </div>
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 1.1rem;">Roberto Silva</strong>
+                            <div style="color: #6c757d; font-size: 0.95rem; margin-top: 2px;">Jefe de Mantenimiento</div>
+                            <div style="color: #dc3545; font-weight: 600; font-size: 0.9rem;">🏭 Industrial Corp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline - Nuestro Proceso -->
+<section class="py-5 bg-dark text-white position-relative">
+    <div class="timeline-bg-pattern"></div>
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold text-warning mb-3">
+                    <i class="fas fa-route me-3"></i>Nuestro Proceso de Trabajo
+                </h2>
+                <p class="lead">Metodología probada para resultados excepcionales</p>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-phone text-primary"></i>
+                        </div>
+                        <h4>1. Contacto Inicial</h4>
+                        <p>Recibimos tu solicitud y programamos una consulta gratuita para entender tus necesidades específicas.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-primary">Respuesta en 2 horas</span>
+                            <span class="badge bg-success">Consulta gratuita</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-search text-info"></i>
+                        </div>
+                        <h4>2. Evaluación Técnica</h4>
+                        <p>Nuestros expertos realizan un diagnóstico completo de tus equipos e infraestructura.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-info">Diagnóstico completo</span>
+                            <span class="badge bg-warning">Reporte detallado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-clipboard-list text-success"></i>
+                        </div>
+                        <h4>3. Propuesta Personalizada</h4>
+                        <p>Desarrollamos un plan de mantenimiento adaptado a tu presupuesto y requerimientos operacionales.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-success">Plan personalizado</span>
+                            <span class="badge bg-primary">Presupuesto detallado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-handshake text-warning"></i>
+                        </div>
+                        <h4>4. Contratación</h4>
+                        <p>Firmamos el contrato y configuramos el acceso a nuestro sistema de gestión digital.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-warning">Contrato flexible</span>
+                            <span class="badge bg-info">Acceso digital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-tools text-danger"></i>
+                        </div>
+                        <h4>5. Ejecución</h4>
+                        <p>Iniciamos los trabajos de mantenimiento siguiendo los más altos estándares de calidad.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-danger">Calidad certificada</span>
+                            <span class="badge bg-success">Seguimiento 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">
+                            <i class="fas fa-chart-line text-success"></i>
+                        </div>
+                        <h4>6. Monitoreo Continuo</h4>
+                        <p>Monitoreamos constantemente el rendimiento y te mantenemos informado con reportes regulares.</p>
+                        <div class="timeline-features">
+                            <span class="badge bg-success">Monitoreo 24/7</span>
+                            <span class="badge bg-primary">Reportes automáticos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Galería de Proyectos -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold">
+                    <i class="fas fa-images me-3 text-primary"></i>Nuestros Proyectos
+                </h2>
+                <p class="lead text-muted">Casos de éxito que demuestran nuestra experiencia</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename='img/proyectos/bulevar-shopping.svg') }}" 
+                             alt="Centro Comercial Bulevar" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h5>Centro Comercial Bulevar</h5>
+                                <p>Sistema completo de climatización</p>
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename='img/proyectos/complejo-eden.svg') }}" 
+                             alt="Complejo Eden" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h5>Complejo Eden</h5>
+                                <p>Mantenimiento preventivo integral</p>
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Oficinas Corporativas" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h5>Oficinas Corporativas</h5>
+                                <p>Gestión digital avanzada</p>
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tecnologías que Utilizamos -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold">
+                    <i class="fas fa-microchip me-3 text-primary"></i>Tecnologías y Herramientas
+                </h2>
+                <p class="lead text-muted">Utilizamos las mejores herramientas del mercado</p>
+            </div>
+        </div>
+        
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h5>Python</h5>
+                <p>Automatización y scripts</p>
+            </div>
+            
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h5>SQL Database</h5>
+                <p>Gestión de datos</p>
+            </div>
+            
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fab fa-react"></i>
+                </div>
+                <h5>React</h5>
+                <p>Interfaces modernas</p>
+            </div>
+            
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h5>Cloud Computing</h5>
+                <p>Servicios en la nube</p>
+            </div>
+            
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h5>Mobile Apps</h5>
+                <p>Aplicaciones móviles</p>
+            </div>
+            
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h5>Analytics</h5>
+                <p>Análisis de datos</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Mejorado -->
+<section class="cta-section py-5 position-relative overflow-hidden">
+    <div class="cta-bg-animation"></div>
+    <div class="container text-center position-relative">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="cta-content">
+                    <div class="cta-icon mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold text-white mb-4">
+                        ¡Transforma tu Mantenimiento HOY!
+                    </h2>
+                    <p class="lead text-white mb-5">
+                        Únete a más de 95 empresas que ya confían en T&S para optimizar sus operaciones. 
+                        <strong>Consulta gratuita</strong> incluida.
+                    </p>
+                    
+                    <div class="cta-buttons mb-4">
+                        <a href="{{ url_for('contacto') }}" class="btn btn-warning btn-lg px-5 me-3 mb-3 cta-button">
+                            <i class="fas fa-calendar-check me-2"></i>Consulta Gratuita
+                            <span class="btn-badge">¡GRATIS!</span>
+                        </a>
+                        <a href="{{ url_for('sistema_login') }}" class="btn btn-outline-light btn-lg px-5 mb-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Demo del Sistema
+                        </a>
+                    </div>
+                    
+                    <div class="cta-guarantees">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="guarantee-item">
+                                    <i class="fas fa-shield-alt text-warning mb-2"></i>
+                                    <span>Garantía de Calidad</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="guarantee-item">
+                                    <i class="fas fa-clock text-warning mb-2"></i>
+                                    <span>Respuesta 24/7</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="guarantee-item">
+                                    <i class="fas fa-thumbs-up text-warning mb-2"></i>
+                                    <span>100% Satisfacción</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chatbot flotante -->
+<div class="floating-chat" id="floatingChat">
+    <div class="chat-button" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+        <div class="chat-notification">1</div>
+    </div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chat-info">
+                <h6>Asistente T&S</h6>
+                <span class="online-status">En línea</span>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>¡Hola! 👋 Soy el asistente virtual de T&S. ¿En qué puedo ayudarte hoy?</p>
+                    <small>Ahora</small>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="sendQuickMessage('Quiero una cotización')">
+                    💰 Solicitar cotización
+                </button>
+                <button class="quick-btn" onclick="sendQuickMessage('Información sobre servicios')">
+                    🔧 Ver servicios
+                </button>
+                <button class="quick-btn" onclick="sendQuickMessage('Soporte técnico')">
+                    🆘 Soporte urgente
+                </button>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Escribe tu mensaje..." id="chatInput" onkeypress="handleChatEnter(event)">
+            <button onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modales para Galería de Proyectos -->
+<div class="modal fade" id="projectModal1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Centro Comercial Bulevar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     class="img-fluid rounded mb-3" alt="Centro Comercial Bulevar">
+                <h6>Detalles del Proyecto:</h6>
+                <ul>
+                    <li>Sistema completo de climatización</li>
+                    <li>Mantenimiento preventivo de 50+ equipos</li>
+                    <li>Implementación de sistema digital</li>
+                    <li>Reducción del 40% en costos operativos</li>
+                </ul>
+                <p><strong>Duración:</strong> 6 meses | <strong>Equipos:</strong> 52 dispositivos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="projectModal2" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Complejo Eden</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     class="img-fluid rounded mb-3" alt="Complejo Eden">
+                <h6>Detalles del Proyecto:</h6>
+                <ul>
+                    <li>Mantenimiento preventivo integral</li>
+                    <li>Monitoreo 24/7 de instalaciones</li>
+                    <li>Optimización energética</li>
+                    <li>Certificaciones de calidad</li>
+                </ul>
+                <p><strong>Duración:</strong> Contrato anual | <strong>Equipos:</strong> 38 dispositivos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="projectModal3" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Oficinas Corporativas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     class="img-fluid rounded mb-3" alt="Oficinas Corporativas">
+                <h6>Detalles del Proyecto:</h6>
+                <ul>
+                    <li>Gestión digital avanzada</li>
+                    <li>Automatización de procesos</li>
+                    <li>Dashboard personalizado</li>
+                    <li>Integración con sistemas existentes</li>
+                </ul>
+                <p><strong>Duración:</strong> 4 meses | <strong>Equipos:</strong> 25 dispositivos</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// ========== CONTADOR ANIMADO PARA ESTADÍSTICAS ==========
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 100;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        if (target >= 100) {
+            element.textContent = Math.floor(current) + (target === 500 ? '+' : target === 50 ? '+' : target === 99 ? '%' : '');
+        } else {
+            element.textContent = Math.floor(current) + '%';
+        }
+    }, 20);
+}
+
+// Intersection Observer para activar animaciones
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            
+            // Animar contadores
+            if (element.classList.contains('stat-number')) {
+                const text = element.textContent;
+                if (text.includes('500+')) animateCounter(element, 500);
+                else if (text.includes('95+')) animateCounter(element, 95);
+                else if (text.includes('99%')) animateCounter(element, 99);
+                else if (text.includes('24/7')) element.textContent = '24/7';
+                
+                observer.unobserve(element);
+            }
+            
+            // Animar elementos del timeline
+            if (element.classList.contains('timeline-card')) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 200);
+                observer.unobserve(element);
+            }
+            
+            // Animar tecnologías
+            if (element.classList.contains('tech-item')) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.6s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, Math.random() * 300);
+                observer.unobserve(element);
+            }
+        }
+    });
+}, observerOptions);
+
+// Observar elementos
+document.addEventListener('DOMContentLoaded', () => {
+    // Observar contadores
+    document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
+    
+    // Observar timeline
+    document.querySelectorAll('.timeline-card').forEach(el => observer.observe(el));
+    
+    // Observar tecnologías
+    document.querySelectorAll('.tech-item').forEach(el => observer.observe(el));
+    
+    // Efectos de scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// ========== CHATBOT FUNCIONALIDAD ==========
+function toggleChat() {
+    const chatWindow = document.getElementById('chatWindow');
+    const chatButton = document.querySelector('.chat-button');
+    
+    if (chatWindow.classList.contains('active')) {
+        chatWindow.classList.remove('active');
+        chatButton.style.transform = 'scale(1)';
+    } else {
+        chatWindow.classList.add('active');
+        chatButton.style.transform = 'scale(0.9)';
+        
+        // Marcar como leído
+        const notification = document.querySelector('.chat-notification');
+        if (notification) {
+            notification.style.display = 'none';
+        }
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (message) {
+        addUserMessage(message);
+        input.value = '';
+        
+        // Simular respuesta del bot
+        setTimeout(() => {
+            addBotResponse(message);
+        }, 1000);
+    }
+}
+
+function sendQuickMessage(message) {
+    addUserMessage(message);
+    setTimeout(() => {
+        addBotResponse(message);
+    }, 1000);
+}
+
+function addUserMessage(message) {
+    const chatBody = document.querySelector('.chat-body');
+    const messageHtml = `
+        <div class="chat-message user-message" style="flex-direction: row-reverse;">
+            <div class="message-avatar" style="background: #007bff;">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="message-content" style="background: #007bff; color: white;">
+                <p>${message}</p>
+                <small>Ahora</small>
+            </div>
+        </div>
+    `;
+    
+    chatBody.insertAdjacentHTML('beforeend', messageHtml);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function addBotResponse(userMessage) {
+    const chatBody = document.querySelector('.chat-body');
+    let response = "Gracias por tu mensaje. Un representante se pondrá en contacto contigo pronto. 🚀";
+    
+    // Respuestas inteligentes
+    if (userMessage.toLowerCase().includes('cotiz') || userMessage.toLowerCase().includes('precio')) {
+        response = "¡Perfecto! Te ayudo con una cotización. 💰 Puedo conectarte con nuestro equipo comercial o puedes llenar el formulario de contacto para una evaluación gratuita.";
+    } else if (userMessage.toLowerCase().includes('servicio') || userMessage.toLowerCase().includes('mantenimiento')) {
+        response = "Ofrecemos servicios de mantenimiento preventivo, correctivo, gestión digital y consultoría técnica. 🔧 ¿Cuál te interesa más?";
+    } else if (userMessage.toLowerCase().includes('soporte') || userMessage.toLowerCase().includes('urgente')) {
+        response = "Para soporte urgente llama al +1 (234) 567-8900. 🆘 Nuestro equipo técnico está disponible 24/7 para emergencias.";
+    }
+    
+    const messageHtml = `
+        <div class="chat-message bot-message">
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+                <p>${response}</p>
+                <small>Ahora</small>
+            </div>
+        </div>
+    `;
+    
+    chatBody.insertAdjacentHTML('beforeend', messageHtml);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function handleChatEnter(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+// ========== EFECTOS ADICIONALES ==========
+// Parallax suave para hero
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.hero-bg-image');
+    const speed = 0.5;
+    
+    if (parallax) {
+        parallax.style.transform = `translateY(${scrolled * speed}px)`;
+    }
+});
+
+// Mostrar notificación del chat después de 10 segundos
+setTimeout(() => {
+    const notification = document.querySelector('.chat-notification');
+    if (notification) {
+        notification.style.display = 'flex';
+        notification.style.animation = 'pulse 1s infinite';
+    }
+}, 10000);
+
+// Efectos de hover mejorados
+document.addEventListener('DOMContentLoaded', () => {
+    // Efecto de mouse en service cards
+    document.querySelectorAll('.service-card, .project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+console.log('🚀 T&S Website loaded successfully!');
+
+// ========== BANNER DE PRIVACIDAD ==========
+// Mostrar banner de privacidad si no se ha aceptado
+function showPrivacyBanner() {
+    const privacyAccepted = localStorage.getItem('privacyAccepted');
+    if (!privacyAccepted) {
+        setTimeout(() => {
+            const banner = document.getElementById('privacyBanner');
+            if (banner) {
+                banner.style.display = 'block';
+                banner.classList.add('show');
+            }
+        }, 3000); // Mostrar después de 3 segundos
+    }
+}
+
+function acceptPrivacy() {
+    localStorage.setItem('privacyAccepted', 'true');
+    const banner = document.getElementById('privacyBanner');
+    if (banner) {
+        banner.classList.remove('show');
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 300);
+    }
+}
+
+function openPrivacySettings() {
+    window.location.href = '/privacidad';
+}
+
+// Inicializar banner de privacidad
+showPrivacyBanner();
+</script>
+
+<!-- Banner de Privacidad/Cookies -->
+<div class="privacy-banner" id="privacyBanner" style="display: none;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="privacy-content">
+                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                    <strong>Privacidad y Protección de Datos</strong>
+                    <p class="mb-0">
+                        Utilizamos cookies y procesamos datos personales para mejorar tu experiencia. 
+                        Al continuar navegando, aceptas nuestra 
+                        <a href="{{ url_for('privacidad') }}" class="text-primary text-decoration-underline">
+                            Política de Privacidad
+                        </a>.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 text-end">
+                <div class="privacy-actions">
+                    <button type="button" class="btn btn-outline-primary btn-sm me-2" onclick="openPrivacySettings()">
+                        <i class="fas fa-cog me-1"></i>Configurar
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="acceptPrivacy()">
+                        <i class="fas fa-check me-1"></i>Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

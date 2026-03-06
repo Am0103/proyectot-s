@@ -1,0 +1,422 @@
+{% extends "landing/base.html" %}
+
+{% block title %}Nuestros Proyectos - T&S Tecnología y Servicios{% endblock %}
+
+{% block content %}
+<!-- Header de la página -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold text-white mb-3">
+                    <i class="fas fa-trophy me-3"></i>Nuestros Proyectos
+                </h1>
+                <p class="lead text-white-50">Casos de éxito que demuestran nuestra experiencia y dedicación</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filtros de Proyectos -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="filter-buttons text-center">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th me-2"></i>Todos los Proyectos
+                    </button>
+                    <button class="filter-btn" data-filter="comercial">
+                        <i class="fas fa-shopping-cart me-2"></i>Comercial
+                    </button>
+                    <button class="filter-btn" data-filter="industrial">
+                        <i class="fas fa-industry me-2"></i>Industrial
+                    </button>
+                    <button class="filter-btn" data-filter="corporativo">
+                        <i class="fas fa-building me-2"></i>Corporativo
+                    </button>
+                    <button class="filter-btn" data-filter="hospitality">
+                        <i class="fas fa-hotel me-2"></i>Hospitalidad
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Galería de Proyectos -->
+<section class="py-5">
+    <div class="container">
+        <div class="projects-grid" id="projectsGrid">
+            
+            <!-- Proyecto 1: Centro Comercial Bulevar -->
+            <div class="project-item" data-category="comercial">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename='img/proyectos/bulevar-shopping.svg') }}" 
+                             alt="Centro Comercial Bulevar" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-success">Completado</span>
+                                <span class="badge bg-primary">Comercial</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Centro Comercial Bulevar</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Enero 2024 - Junio 2024
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Ciudad Central
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2: Complejo Eden -->
+            <div class="project-item" data-category="hospitality">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename='img/proyectos/complejo-eden.svg') }}" 
+                             alt="Complejo Eden" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-success">En Curso</span>
+                                <span class="badge bg-warning">Hospitalidad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Complejo Eden</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Contrato Anual 2024-2025
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Zona Turística
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 3: Oficinas Corporativas -->
+            <div class="project-item" data-category="corporativo">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Oficinas Corporativas" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-success">Completado</span>
+                                <span class="badge bg-info">Corporativo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Torre Corporativa Tech</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Marzo 2024 - Junio 2024
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Distrito Financiero
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 4: Planta Industrial -->
+            <div class="project-item" data-category="industrial">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1565027516542-80e2265bdc42?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Planta Industrial" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-success">Completado</span>
+                                <span class="badge bg-danger">Industrial</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Planta Industrial MetalTech</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Mayo 2023 - Diciembre 2023
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Zona Industrial
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 5: Hospital San Rafael -->
+            <div class="project-item" data-category="hospitality">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Hospital" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-warning">En Progreso</span>
+                                <span class="badge bg-danger">Crítico</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Hospital San Rafael</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Agosto 2024 - En curso
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Centro Médico
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 6: Universidad TechCampus -->
+            <div class="project-item" data-category="corporativo">
+                <div class="project-card-full">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1592280771190-3e2e4d571952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Universidad" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-badges">
+                                <span class="badge bg-success">Completado</span>
+                                <span class="badge bg-info">Educativo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h4 class="project-title">Universidad TechCampus</h4>
+                            <div class="project-meta">
+                                <span class="project-date">
+                                    <i class="fas fa-calendar me-1"></i>Enero 2024 - Mayo 2024
+                                </span>
+                                <span class="project-location">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Campus Universitario
+                                </span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('contacto') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contactar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estadísticas de Proyectos -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-4">
+                <h3 class="fw-bold text-warning">Nuestros Números en Proyectos</h3>
+                <p class="text-light">Resultados que demuestran nuestra experiencia</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="project-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number text-warning">127+</div>
+                    <div class="stat-label">Proyectos Completados</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="project-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number text-warning">98%</div>
+                    <div class="stat-label">Entregados a Tiempo</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="project-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number text-warning">15</div>
+                    <div class="stat-label">Premios Recibidos</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="project-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number text-warning">35</div>
+                    <div class="stat-label">Especialistas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold text-white mb-4">
+                    ¿Tienes un proyecto en mente?
+                </h2>
+                <p class="lead text-white mb-4">
+                    Cuéntanos sobre tu proyecto y te ayudaremos a convertirlo en una historia de éxito más.
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{{ url_for('contacto') }}" class="btn btn-warning btn-lg px-5">
+                        <i class="fas fa-lightbulb me-2"></i>Discutir Proyecto
+                    </a>
+                    <a href="{{ url_for('sistema_login') }}" class="btn btn-outline-light btn-lg px-5">
+                        <i class="fas fa-chart-line me-2"></i>Ver Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Filtros de proyectos
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Agregar clase active al botón clickeado
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            projectItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Animación de contadores en la sección de estadísticas
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                
+                if (element.classList.contains('stat-number')) {
+                    const text = element.textContent;
+                    let target = 0;
+                    
+                    if (text.includes('127+')) target = 127;
+                    else if (text.includes('98%')) target = 98;
+                    else if (text.includes('15')) target = 15;
+                    else if (text.includes('35')) target = 35;
+                    
+                    if (target > 0) {
+                        animateCounter(element, target, text.includes('%') ? '%' : text.includes('+') ? '+' : '');
+                    }
+                    
+                    observer.unobserve(element);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observar contadores
+    document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
+});
+
+function animateCounter(element, target, suffix = '') {
+    let current = 0;
+    const increment = target / 100;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + suffix;
+    }, 20);
+}
+
+// Efectos de hover para las tarjetas de proyecto
+document.querySelectorAll('.project-card-full').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+    });
+});
+</script>
+{% endblock %}
