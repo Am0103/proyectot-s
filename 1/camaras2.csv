@@ -1,0 +1,6 @@
+#;UBICACION;TIPO;ESTADO;DIAGRAMA;OBSERVACION
+1;Hall Principal;CCTV;Ok;diagrama_hall.svg;Vista panorámica
+2;Cafetería;CCTV;Ok;diagrama_cafeteria.svg;Monitoreo continuo
+3;Oficinas P2;CCTV;Falla;diagrama_oficinas.svg;Cámara con interferencia
+4;Salida de Emergencia;CCTV;Ok;diagrama_emergencia.svg;Con detección de movimiento
+5;Estacionamiento;CCTV;Ok;diagrama_estacionamiento.svg;Cobertura completa

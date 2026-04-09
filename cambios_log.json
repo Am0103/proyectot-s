@@ -271,5 +271,26 @@
     "usuario": "admin",
     "accion": "Cierre de sesión admin",
     "detalle": ""
+  },
+  {
+    "fecha": "09/04/2026 12:03:53",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Inicio de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "09/04/2026 12:12:32",
+    "cliente": "bulevar",
+    "usuario": "bulevar",
+    "accion": "Cierre de sesión (editor)",
+    "detalle": ""
+  },
+  {
+    "fecha": "09/04/2026 12:12:49",
+    "cliente": "SISTEMA",
+    "usuario": "admin",
+    "accion": "Inicio de sesión admin",
+    "detalle": ""
   }
 ]

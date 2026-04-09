@@ -1,0 +1,6 @@
+#;UBICACION;TIPO;ESTADO;DIAGRAMA;OBSERVACION
+1;Entrada Principal;CCTV;Ok;diagrama_entrada.svg;Funcionando correctamente
+2;Pasillo P1;CCTV;Falla;diagrama_pasillo.svg;Cámara desconectada
+3;Parking;CCTV;Ok;diagrama_parking.svg;Vista completa
+4;Ascensores;CCTV;Ok;diagrama_ascensores.svg;Monitoreo 24/7
+5;Recepción;CCTV;Ok;diagrama_recepcion.svg;Cámara HD

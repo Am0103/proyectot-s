@@ -14,14 +14,16 @@ CLIENTES = {
             "bulevar": {"clave": "admin", "rol": "editor"},
             "bulevar_view": {"clave": "view123", "rol": "viewer"}
         },
-        "csv": "1/dispositivos1.csv"
+        "csv": "1/dispositivos1.csv",
+        "camaras_csv": "1/camaras1.csv"
     },
     "eden": {
         "usuarios": {
             "eden": {"clave": "admin", "rol": "editor"},
             "eden_view": {"clave": "view123", "rol": "viewer"}
         },
-        "csv": "1/dispositivos2.csv"
+        "csv": "1/dispositivos2.csv",
+        "camaras_csv": "1/camaras2.csv"
     }
 }
 
@@ -540,6 +542,98 @@ def api_update():
     if updated:
         try:
             with open(csv_path, "w", newline='', encoding=working_encoding) as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=";")
+                writer.writeheader()
+                writer.writerows(rows)
+            return jsonify({"success": True})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    else:
+        return jsonify({"error": "No encontrado"}), 404
+
+@app.route("/api/camaras")
+def api_camaras():
+    if "cliente" not in session:
+        return jsonify({"error": "No autorizado"}), 401
+    
+    camaras_csv = CLIENTES[session["cliente"]]["camaras_csv"]
+    data = []
+    
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1', 'utf-8-sig']
+    
+    for encoding in encodings:
+        try:
+            with open(camaras_csv, encoding=encoding) as f:
+                reader = csv.DictReader(f, delimiter=";")
+                for row in reader:
+                    clean_row = {
+                        "SERIAL": (row.get("#") or "").strip(),
+                        "UBICACION": (row.get("UBICACION") or "").strip(),
+                        "TIPO": (row.get("TIPO") or "").strip(),
+                        "ESTADO": (row.get("ESTADO") or "").strip(),
+                        "DIAGRAMA": (row.get("DIAGRAMA") or "").strip(),
+                        "OBSERVACION": (row.get("OBSERVACION") or "").strip()
+                    }
+                    if clean_row["SERIAL"]:
+                        data.append(clean_row)
+            break
+        except UnicodeDecodeError:
+            continue
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    
+    return jsonify(data)
+
+@app.route("/api/update_camaras", methods=["POST"])
+def api_update_camaras():
+    if "cliente" not in session:
+        return jsonify({"error": "No autorizado"}), 401
+    
+    if session.get("rol") != "editor":
+        return jsonify({"error": "Sin permisos de edición"}), 403
+    
+    req = request.json
+    serial = req.get("SERIAL")
+    campo = req.get("campo")
+    valor = req.get("valor")
+    
+    camaras_csv = CLIENTES[session["cliente"]]["camaras_csv"]
+    updated = False
+    rows = []
+    fecha_hoy = datetime.now().strftime("%d/%m/%Y")
+    
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+    working_encoding = 'utf-8'
+    
+    for encoding in encodings:
+        try:
+            with open(camaras_csv, encoding=encoding) as f:
+                reader = csv.DictReader(f, delimiter=";")
+                fieldnames = reader.fieldnames
+                working_encoding = encoding
+                
+                for row in reader:
+                    if (row.get("#") or "").strip() == serial:
+                        old_value = row.get(campo, "")
+                        if campo == "SERIAL":
+                            row["#"] = valor
+                        else:
+                            row[campo] = valor
+                        updated = True
+                        
+                        log_cambio(session["cliente"], session["usuario"], 
+                                 f"Edición cámara {campo}", 
+                                 f"ID {serial}: '{old_value}' -> '{valor}'")
+                    rows.append(row)
+            break
+        except UnicodeDecodeError:
+            continue
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    
+    if updated:
+        try:
+            with open(camaras_csv, "w", newline='', encoding=working_encoding) as f:
                 writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=";")
                 writer.writeheader()
                 writer.writerows(rows)

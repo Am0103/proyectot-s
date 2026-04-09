@@ -1,0 +1,6 @@
+<svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="150" fill="#f0f0f0" stroke="#000" stroke-width="2"/>
+  <circle cx="100" cy="75" r="30" fill="#ff0000"/>
+  <text x="100" y="80" text-anchor="middle" fill="white" font-size="12">Cámara</text>
+  <text x="100" y="130" text-anchor="middle" fill="#000" font-size="10">Entrada Principal</text>
+</svg>

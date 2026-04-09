@@ -12,6 +12,33 @@ venv/
 instance/
 .webassets-cache
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+cambios_log.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+contactos.csv
+data.db
+
+# Flask
+instance/
+.webassets-cache
+
 # IDE
 .vscode/
 .idea/
