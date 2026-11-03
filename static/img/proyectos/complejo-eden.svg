@@ -12,5 +12,5 @@
   <polygon points="350,250 400,200 450,250" fill="#20c997"/>
   <text x="400" y="400" text-anchor="middle" fill="#fff" font-family="Arial" font-size="32" font-weight="bold">COMPLEJO</text>
   <text x="400" y="440" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">EDEN</text>
-  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">Proyecto T&S</text>
+  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">Proyecto T&amp;S</text>
 </svg>

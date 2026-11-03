@@ -12,5 +12,5 @@
   <polygon points="400,150 420,190 380,190" fill="#fff" opacity="0.9"/>
   <text x="400" y="380" text-anchor="middle" fill="#fff" font-family="Arial" font-size="32" font-weight="bold">MANTENIMIENTO</text>
   <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">CORRECTIVO</text>
-  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">T&S Servicios Técnicos</text>
+  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">T&amp;S Servicios Técnicos</text>
 </svg>

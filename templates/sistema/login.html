@@ -1,84 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Login - Sistema de Mantenimiento</title>
-<style>
-body { font-family: Arial; background: #f4f6f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-.login-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,.15); max-width: 400px; width: 100%; }
-.login-container h2 { color: #b22222; text-align: center; margin-bottom: 30px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
-.form-group select, .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
-.btn { background: #b22222; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; }
-.btn:hover { background: #8b1a1a; }
-.error { color: red; text-align: center; margin-bottom: 15px; }
-
-/* CUADRO DE AYUDA - OCULTO POR DEFECTO */
-.help-box { 
-    background: #f8f9fa; 
-    border: 1px solid #e9ecef; 
-    border-radius: 5px; 
-    padding: 15px; 
-    margin-top: 20px; 
-    font-size: 13px;
-    display: none; /* OCULTO POR DEFECTO */
-}
-.help-box h4 { margin: 0 0 10px 0; color: #495057; }
-.user-list { margin: 5px 0; }
-.user-item { margin: 3px 0; }
-
-/* Botón para mostrar ayuda */
-.help-toggle {
-    text-align: center;
-    margin-top: 15px;
-}
-.help-toggle button {
-    background: #6c757d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-}
-.help-toggle button:hover {
-    background: #5a6268;
-}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Iniciar sesión | T&amp;S</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/system.css') }}" rel="stylesheet">
 </head>
-<body>
-<div class="login-container">
-    <h2>🔐 Iniciar Sesión</h2>
-    
-    {% if error %}
-    <div class="error">{{ error }}</div>
-    {% endif %}
-    
-    <form method="post">
-        <div class="form-group">
-            <label>Cliente:</label>
-            <select name="cliente" id="cliente" required>
-                <option value="">Seleccione cliente...</option>
-                {% for cliente in clientes %}
-                <option value="{{ cliente }}">{{ cliente|title }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label>Usuario:</label>
-            <input type="text" name="usuario" required>
-        </div>
-        
-        <div class="form-group">
-            <label>Contraseña:</label>
-            <input type="password" name="clave" required>
-        </div>
-        
-        <button type="submit" class="btn">Ingresar</button>
-    </form>
-    
-</script>
+<body class="login-page">
+    <main class="login-shell">
+        <section class="login-card">
+            <a class="system-brand text-decoration-none" href="{{ url_for('home') }}">
+                <span class="brand-mark">T&amp;S</span>
+                <span><strong class="text-dark">Tecnología y Servicios</strong><small class="text-secondary">Plataforma de gestión</small></span>
+            </a>
+            <h1>Acceso al sistema</h1>
+            <p class="text-secondary mb-4">Ingresa con la cuenta asignada por el administrador.</p>
+            {% if error %}<div class="login-error mb-3" role="alert">{{ error }}</div>{% endif %}
+            <form method="post" action="{{ url_for('sistema_login') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="mb-3">
+                    <label class="form-label" for="cliente">Cliente</label>
+                    <select class="form-select" name="cliente" id="cliente" required>
+                        <option value="">Selecciona un cliente</option>
+                        {% for cliente in clientes %}<option value="{{ cliente }}">{{ cliente|title }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="usuario">Usuario</label>
+                    <input class="form-control" type="text" name="usuario" id="usuario" autocomplete="username" maxlength="40" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="clave">Contraseña</label>
+                    <input class="form-control" type="password" name="clave" id="clave" autocomplete="current-password" required>
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
+            </form>
+            <a class="back-link d-inline-block mt-4" href="{{ url_for('home') }}">← Volver al sitio de T&amp;S</a>
+        </section>
+    </main>
 </body>
 </html>

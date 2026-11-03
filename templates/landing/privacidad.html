@@ -42,9 +42,8 @@
                         </div>
                         <div class="info-card">
                             <p><strong>Empresa:</strong> T&S Tecnología y Servicios</p>
-                            <p><strong>Email:</strong> contacto@tys.com</p>
-                            <p><strong>Teléfono:</strong> +34 900 123 456</p>
-                            <p><strong>Dirección:</strong> Calle Principal 123, 28001 Madrid, España</p>
+                            <p>Para consultas relacionadas con privacidad, utiliza el formulario de contacto e indica el motivo de tu solicitud.</p>
+                            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('contacto') }}">Ir al formulario de contacto</a>
                         </div>
                     </div>
 
@@ -75,12 +74,10 @@
                             </div>
                             
                             <div class="data-type-card">
-                                <h4><i class="fas fa-chart-line me-2"></i>Datos Técnicos</h4>
+                                <h4><i class="fas fa-shield-alt me-2"></i>Datos de sesión</h4>
                                 <ul>
-                                    <li>Dirección IP</li>
-                                    <li>Tipo de navegador</li>
-                                    <li>Páginas visitadas</li>
-                                    <li>Fecha y hora de acceso</li>
+                                    <li>La sesión de acceso conserva la cuenta, el cliente y el rol necesarios para operar el sistema.</li>
+                                    <li>El sitio recuerda localmente si se cerró el aviso de privacidad.</li>
                                 </ul>
                             </div>
                         </div>
@@ -260,7 +257,7 @@
                             <div class="security-card">
                                 <i class="fas fa-sync text-success"></i>
                                 <h4>Copias de Seguridad</h4>
-                                <p>Realizamos copias de seguridad regulares para prevenir pérdida de datos.</p>
+                                <p>Se genera un respaldo local antes de las operaciones de modificación que administra la aplicación.</p>
                             </div>
                         </div>
                     </div>
@@ -271,11 +268,11 @@
                             <i class="fas fa-cookie-bite text-primary"></i>
                             <h2>Cookies y Tecnologías Similares</h2>
                         </div>
-                        <p>Nuestro sitio web utiliza cookies técnicas necesarias para el funcionamiento básico. No utilizamos cookies de seguimiento o publicitarias sin su consentimiento explícito.</p>
+                        <p>El sistema de gestión utiliza una cookie de sesión para mantener el acceso autenticado. La página principal guarda en el navegador la preferencia de cierre del aviso de privacidad. El código de la aplicación no implementa cookies analíticas o publicitarias.</p>
                         <div class="cookie-types">
                             <div class="cookie-type">
-                                <h4><i class="fas fa-cog text-success me-2"></i>Cookies Técnicas</h4>
-                                <p>Necesarias para el funcionamiento del sitio web (sesiones, formularios, etc.)</p>
+                                <h4><i class="fas fa-cog text-success me-2"></i>Sesión y preferencia local</h4>
+                                <p>La cookie de sesión se usa en el sistema de gestión; la preferencia del aviso se conserva en el navegador.</p>
                             </div>
                         </div>
                     </div>
@@ -287,22 +284,8 @@
                             <h2>Contacto para Temas de Privacidad</h2>
                         </div>
                         <div class="contact-privacy">
-                            <p>Para ejercer sus derechos o realizar consultas sobre privacidad:</p>
-                            <div class="contact-methods">
-                                <div class="contact-method">
-                                    <i class="fas fa-envelope text-primary"></i>
-                                    <strong>Email:</strong> privacidad@tys.com
-                                </div>
-                                <div class="contact-method">
-                                    <i class="fas fa-phone text-primary"></i>
-                                    <strong>Teléfono:</strong> +34 900 123 456
-                                </div>
-                                <div class="contact-method">
-                                    <i class="fas fa-map-marker-alt text-primary"></i>
-                                    <strong>Dirección:</strong> Calle Principal 123, 28001 Madrid
-                                </div>
-                            </div>
-                            <p class="mt-3"><strong>Tiempo de respuesta:</strong> Máximo 30 días naturales</p>
+                            <p>Para ejercer tus derechos o realizar consultas, envía una solicitud mediante el formulario de contacto. Indica el asunto para facilitar su gestión.</p>
+                            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('contacto') }}">Enviar consulta de privacidad</a>
                         </div>
                     </div>
 

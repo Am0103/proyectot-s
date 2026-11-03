@@ -11,6 +11,10 @@ venv/
 # Flask
 instance/
 .webassets-cache
+.env
+.env.*
+!.env.example
+*.lock
 
 # Database
 *.db

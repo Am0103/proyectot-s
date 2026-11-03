@@ -2588,3 +2588,40 @@ footer a:hover {
         max-width: 120px;
     }
 }
+
+:root {
+    --primary-color: #173f7a;
+    --secondary-color: #f4b400;
+}
+
+.navbar.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-warning {
+    --bs-btn-color: #172338;
+    --bs-btn-bg: var(--secondary-color);
+    --bs-btn-border-color: var(--secondary-color);
+    --bs-btn-hover-bg: #e3a600;
+    --bs-btn-hover-border-color: #e3a600;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #f4b400;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

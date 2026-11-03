@@ -29,6 +29,7 @@
                         <p class="text-muted mb-4">Completa el formulario y nos pondremos en contacto contigo</p>
                     </div>
                     <form id="contactForm" method="POST" action="{{ url_for('contacto') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="nombre" class="form-label">Nombre Completo *</label>
@@ -80,13 +81,13 @@
                                 </div>
                             </div>
                             <div class="col-12">
+                                <div id="contactFeedback" class="alert d-none" role="status" aria-live="polite"></div>
                                 <button type="submit" class="btn btn-primary btn-lg">
                                     <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
                                 </button>
                                 <p class="mt-2 text-muted small">
                                     <i class="fas fa-info-circle me-1"></i>
-                                    Sus datos serán tratados conforme a nuestra política de privacidad. 
-                                    Puede ejercer sus derechos enviando un email a privacidad@tys.com
+                                    Consulta la Política de Privacidad. Para consultas sobre tus datos, indica ese motivo en el mensaje.
                                 </p>
                             </div>
                         </div>
@@ -95,152 +96,29 @@
             </div>
             
             <div class="col-lg-4">
-                <!-- Imagen del equipo -->
                 <div class="contact-team-image mb-4">
-                    <!-- Aquí pondrás tu imagen del equipo -->
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                         alt="Nuestro equipo" class="img-fluid rounded-3 shadow">
+                    <img src="{{ url_for('static', filename='img/equipo/equipo-profesional.svg') }}"
+                         alt="Equipo de T&amp;S" class="img-fluid rounded-3 shadow">
                     <div class="team-badge">
                         <i class="fas fa-users"></i>
-                        <span>Equipo Profesional</span>
+                        <span>T&amp;S Tecnología y Servicios</span>
                     </div>
                 </div>
-                
+
                 <div class="contact-info-card">
-                    <h3 class="mb-4">
-                        <i class="fas fa-phone-alt me-2 text-primary"></i>Contáctanos
-                    </h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h5>Oficina Principal</h5>
-                            <p class="mb-0">Av. Principal 123<br>Ciudad, País<br>Código Postal 12345</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h5>Teléfonos</h5>
-                            <p class="mb-0">
-                                <a href="tel:+12345678900" class="text-decoration-none">+1 (234) 567-8900</a><br>
-                                <a href="tel:+12345678901" class="text-decoration-none">+1 (234) 567-8901</a>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h5>Emails</h5>
-                            <p class="mb-0">
-                                <a href="mailto:contacto@tys.com" class="text-decoration-none">contacto@tys.com</a><br>
-                                <a href="mailto:ventas@tys.com" class="text-decoration-none">ventas@tys.com</a>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h5>Horarios</h5>
-                            <p class="mb-0">
-                                Lun - Vie: 8:00 AM - 6:00 PM<br>
-                                Sáb: 8:00 AM - 2:00 PM<br>
-                                <span class="text-success fw-bold">Emergencias: 24/7</span>
-                            </p>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <div class="contact-item mb-4">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h5>Horarios</h5>
-                            <p>Lun - Vie: 8:00 AM - 6:00 PM<br>Sáb: 9:00 AM - 2:00 PM<br>Dom: Cerrado</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Emergencias -->
-                    <div class="emergency-contact">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Emergencias 24/7:</strong><br>
-                        <span class="text-danger">+1 (234) 567-HELP</span>
-                    </div>
+                    <h3 class="mb-3"><i class="fas fa-comments me-2 text-primary"></i>Hablemos de tu proyecto</h3>
+                    <p class="text-muted">Cuéntanos qué necesitas en el formulario. Incluye el tipo de servicio, la ubicación y cualquier detalle técnico útil.</p>
+                    <a href="#contactForm" class="btn btn-primary w-100">
+                        <i class="fas fa-paper-plane me-2"></i>Enviar una solicitud
+                    </a>
                 </div>
-                
-                <!-- Acceso al Sistema -->
+
                 <div class="system-access-card mt-4">
                     <h4>¿Ya eres cliente?</h4>
-                    <p>Accede a tu panel de gestión para revisar el estado de tus equipos</p>
+                    <p>Consulta los inventarios de dispositivos y cámaras asociados a tu cuenta.</p>
                     <a href="{{ url_for('sistema_login') }}" class="btn btn-success w-100">
                         <i class="fas fa-sign-in-alt me-2"></i>Acceder al Sistema
                     </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Mapa (Opcional) -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h3>Nuestra Ubicación</h3>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Mapa y Ubicación -->
-<section class="py-5 bg-dark text-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h3 class="mb-4">
-                    <i class="fas fa-map-marker-alt me-2 text-warning"></i>Nuestra Ubicación
-                </h3>
-                <p class="lead mb-4">Nos encontramos en una ubicación estratégica para brindarte el mejor servicio.</p>
-                <div class="location-features">
-                    <div class="location-item">
-                        <i class="fas fa-car text-warning me-3"></i>
-                        <span>Fácil acceso vehicular</span>
-                    </div>
-                    <div class="location-item">
-                        <i class="fas fa-clock text-warning me-3"></i>
-                        <span>Horarios extendidos</span>
-                    </div>
-                    <div class="location-item">
-                        <i class="fas fa-tools text-warning me-3"></i>
-                        <span>Taller completamente equipado</span>
-                    </div>
-                </div>
-                <a href="#" class="btn btn-warning btn-lg mt-4" onclick="alert('Aquí se abriría la dirección en Google Maps')">
-                    <i class="fas fa-directions me-2"></i>Cómo Llegar
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <div class="map-container">
-                    <!-- Aquí pondrás tu imagen del mapa o oficina -->
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Nuestra oficina" class="img-fluid rounded-3 shadow-lg">
-                    <div class="map-overlay">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <span>Ver en Google Maps</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -257,18 +135,18 @@
             </div>
             <div class="col-lg-6">
                 <div class="faq-item">
-                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Cuánto tiempo toma una respuesta?</h5>
-                    <p>Respondemos dentro de las primeras 2 horas en horario laboral. Para emergencias, nuestro tiempo de respuesta es de 30 minutos.</p>
+                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Qué información incluyo en mi solicitud?</h5>
+                    <p>Describe el servicio requerido, el tipo de equipo y su ubicación. No incluyas contraseñas ni datos sensibles.</p>
                 </div>
                 <div class="faq-item">
-                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Ofrecen contratos de mantenimiento?</h5>
-                    <p>Sí, ofrecemos contratos anuales con descuentos especiales y atención prioritaria.</p>
+                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Cómo consulto mis equipos?</h5>
+                    <p>Si ya tienes una cuenta, ingresa al sistema para revisar los inventarios de dispositivos y cámaras de tu cliente.</p>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="faq-item">
-                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Trabajan fines de semana?</h5>
-                    <p>Ofrecemos servicio de emergencia 24/7. Para servicios programados, trabajamos sábados por las mañanas.</p>
+                    <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Puedo solicitar una cotización?</h5>
+                    <p>Sí. Selecciona el servicio de interés y agrega los detalles necesarios en el formulario de contacto.</p>
                 </div>
                 <div class="faq-item">
                     <h5><i class="fas fa-question-circle text-primary me-2"></i>¿Cómo accedo al sistema de gestión?</h5>
@@ -287,6 +165,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     const form = this;
     const submitBtn = form.querySelector('button[type="submit"]');
+    const feedback = document.getElementById('contactFeedback');
     const originalText = submitBtn.innerHTML;
     
     // Validar campos obligatorios
@@ -296,12 +175,14 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const consentimiento = form.consentimiento.checked;
     
     if (!nombre || !email || !mensaje) {
-        alert('Por favor completa todos los campos obligatorios (nombre, email y mensaje).');
+        feedback.textContent = 'Completa nombre, correo y mensaje.';
+        feedback.className = 'alert alert-warning';
         return;
     }
     
     if (!consentimiento) {
-        alert('Debe aceptar la Política de Privacidad para continuar.');
+        feedback.textContent = 'Debes aceptar la Política de Privacidad para continuar.';
+        feedback.className = 'alert alert-warning';
         return;
     }
     
@@ -317,20 +198,25 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(async response => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'No fue posible enviar el mensaje.');
+        return data;
+    })
     .then(data => {
         if (data.success) {
-            // Éxito
-            alert(data.message);
+            feedback.textContent = data.message;
+            feedback.className = 'alert alert-success';
             form.reset();
         } else {
-            // Error
-            alert('Error: ' + data.message);
+            feedback.textContent = data.message;
+            feedback.className = 'alert alert-danger';
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Error al enviar el mensaje. Por favor inténtalo de nuevo.');
+        feedback.textContent = error.message || 'Error al enviar el mensaje. Inténtalo de nuevo.';
+        feedback.className = 'alert alert-danger';
     })
     .finally(() => {
         // Restaurar botón

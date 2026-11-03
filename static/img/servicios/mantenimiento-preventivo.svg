@@ -12,5 +12,5 @@
   <rect x="360" y="280" width="80" height="20" fill="#fff" opacity="0.6"/>
   <text x="400" y="380" text-anchor="middle" fill="#fff" font-family="Arial" font-size="32" font-weight="bold">MANTENIMIENTO</text>
   <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">PREVENTIVO</text>
-  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">T&S Servicios Técnicos</text>
+  <text x="400" y="480" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">T&amp;S Servicios Técnicos</text>
 </svg>
